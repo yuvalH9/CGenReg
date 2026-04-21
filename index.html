@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <meta
+      name="description"
+      content="Project page for C-GenReg, a CVPR 2026 paper on training-free 3D point cloud registration via multi-view-consistent geometry-to-image generation and probabilistic fusion."
+    />
+    <title>C-GenReg | CVPR 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <a class="brand" href="#top"><span>C</span>-GenReg</a>
+        <nav class="topnav">
+          <a href="#abstract">Abstract</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#bibtex">Citation</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section class="hero">
+          <div class="hero-backdrop"></div>
+          <div class="hero-inner">
+            <div class="hero-layout">
+              <div class="hero-copy">
+                <h1 class="hero-title" data-reveal>
+                  <span class="accent"><em>C</em>-GenReg</span>:
+                  Training-Free 3D Point Cloud Registration by
+                  Multi-View-Consistent Geometry-to-Image Generation with
+                  Probabilistic Modalities Fusion
+                </h1>
+                <div class="authors" data-reveal>
+                  <span>
+                    <a
+                      href="https://scholar.google.com/citations?user=Gsa-kwkAAAAJ&amp;hl=en&amp;oi=ao"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Yuval Haitman
+                    </a>
+                  </span>
+                  <span>Amit Efraim</span>
+                  <span>
+                    <a
+                      href="https://scholar.google.com/citations?user=vqojgYAAAAAJ&amp;hl=en&amp;oi=ao"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Joseph M. Francos
+                    </a>
+                  </span>
+                </div>
+                <p class="affiliation" data-reveal>
+                  Ben-Gurion University, Beer-Sheva, Israel
+                </p>
+                <p class="publication-venue" data-reveal>CVPR 2026</p>
+
+                <div class="button-row" data-reveal>
+                  <a
+                    class="button-pill dark"
+                    href="https://arxiv.org/abs/2604.16680"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <span class="button-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" role="img">
+                        <path d="M7 3.75h7.5l4.75 4.75v11.75a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2V5.75a2 2 0 0 1 2-2Z"></path>
+                        <path d="M14.5 3.75v4.75h4.75"></path>
+                      </svg>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                  <a
+                    class="button-pill dark"
+                    href="https://github.com/yuvalH9/CGenReg"
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <span class="button-icon" aria-hidden="true">
+                      <svg viewBox="0 0 496 512" role="img">
+                        <path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                      </svg>
+                    </span>
+                    <span>GitHub</span>
+                  </a>
+                  <a class="button-pill dark" href="#bibtex">
+                    <span class="button-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" role="img">
+                        <path d="M9.25 7.5c-2.2 0-3.75 1.55-3.75 3.75v1.5c0 2.2 1.55 3.75 3.75 3.75 2.2 0 3.75-1.55 3.75-3.75v-1.5c0-2.2-1.55-3.75-3.75-3.75Z"></path>
+                        <path d="M18.75 7.5c-2.2 0-3.75 1.55-3.75 3.75v1.5c0 2.2 1.55 3.75 3.75 3.75s3.75-1.55 3.75-3.75v-1.5c0-2.2-1.55-3.75-3.75-3.75Z"></path>
+                        <path d="M8 16.5 6.5 20.25"></path>
+                        <path d="M17.5 16.5 16 20.25"></path>
+                      </svg>
+                    </span>
+                    <span>BibTeX</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="hero-media" data-reveal>
+                <div class="video-card hero-video-card">
+                  <video
+                    id="hero-video"
+                    controls
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                  >
+                    <source src="./assets/videos/vid.mp4" type="video/mp4" />
+                  </video>
+                  <p class="video-caption hero-summary">
+                    C-GenReg enables training-free 3D registration by
+                    transforming point clouds into multi-view consistent RGB
+                    images, allowing Vision Foundation Model features to
+                    augment conventional 3D geometric features for more robust
+                    registration.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="abstract">
+          <div class="section-heading" data-reveal>
+            <h2>Abstract</h2>
+          </div>
+          <div class="abstract-grid">
+            <article class="abstract-card" data-reveal>
+              <p>
+                We introduce C-GenReg, a training-free framework for 3D point
+                cloud registration that leverages the complementary strengths
+                of world-scale generative priors and registration-oriented
+                Vision Foundation Models (VFMs). Current learning-based 3D
+                point cloud registration methods struggle to generalize across
+                sensing modalities, sampling differences, and environments.
+                C-GenReg augments the geometric registration branch by
+                transferring the matching problem into an auxiliary image
+                domain, where VFMs excel, using a World Foundation Model to
+                synthesize multi-view-consistent RGB representations from the
+                input geometry.
+              </p>
+              <p>
+                This generative transfer preserves spatial coherence across
+                source and target views without any fine-tuning. From these
+                generated views, a VFM pretrained for dense correspondences
+                extracts matches, which are lifted back to 3D via the original
+                depth maps. To further enhance robustness, we introduce a
+                <em>Match-then-Fuse</em> probabilistic cold-fusion scheme that
+                combines the generated-RGB and geometric correspondence
+                posteriors. This principled fusion preserves each modality's
+                inductive bias and provides calibrated confidence without any
+                additional learning. C-GenReg is zero-shot and plug-and-play,
+                and experiments on 3DMatch, ScanNet, and Waymo demonstrate
+                strong zero-shot performance, superior cross-domain
+                generalization, and successful operation on real outdoor LiDAR
+                data where imagery is unavailable.
+              </p>
+            </article>
+            <figure class="teaser-card" data-reveal>
+              <img
+                src="./assets/figures/teaser.png"
+                alt="C-GenReg teaser figure showing the generated-RGB branch, geometric branch, and probabilistic fusion."
+              />
+              <figcaption>
+                <strong><em>C-GenReg</em></strong> operates with a
+                generated-RGB branch, a geometric branch, and a probabilistic
+                fusion stage that combines both correspondence sources before
+                estimating the final rigid transformation.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="section" id="method">
+          <div class="section-heading" data-reveal>
+            <h2>Method</h2>
+          </div>
+
+          <figure class="feature-figure" data-reveal>
+            <img
+              src="./assets/figures/method-overview.png"
+              alt="Overview of the C-GenReg pipeline."
+            />
+            <figcaption>
+              <strong>Method overview.</strong> The generated-RGB branch and
+              the geometric branch produce independent correspondence
+              posteriors that are fused by the Match-then-Fuse module before
+              pose estimation.
+            </figcaption>
+          </figure>
+
+          <div class="method-grid">
+            <article class="info-card" data-reveal>
+              <h3>1. Generated-RGB Branch</h3>
+              <p>
+                Source and target point clouds are represented as depth-frame
+                sequences, temporally concatenated, and processed by a frozen
+                World Foundation Model to generate RGB views that are
+                geometrically coherent with the input depth and cross-view
+                consistent. A subset of <em>K</em> frames per domain is then
+                fed to a frozen, task-specific VFM, and the resulting dense
+                pixel features are lifted back to 3D using the original depth
+                maps.
+              </p>
+            </article>
+            <article class="info-card" data-reveal>
+              <h3>2. Geometric Branch</h3>
+              <p>
+                In parallel, the raw point clouds are processed by a
+                pretrained geometric feature extractor that produces dense
+                geometric descriptors directly in 3D. This branch preserves the
+                registration-oriented geometric cues that complement the
+                generated-image representation.
+              </p>
+            </article>
+            <article class="info-card" data-reveal>
+              <h3>3. <em>Match-then-Fuse</em> Probabilistic Fusion</h3>
+              <p>
+                Each modality produces a posterior correspondence map,
+                <em>p</em><sub>img</sub> and <em>p</em><sub>geo</sub>, from its
+                similarity scores. These are fused by the proposed
+                <em>Match-then-Fuse</em> probabilistic module into a unified
+                posterior <em>p</em><sub>fuse</sub>, from which the final rigid
+                transformation is estimated.
+              </p>
+            </article>
+          </div>
+
+          <figure class="visual-card lidar-card" data-reveal>
+            <img
+              src="./assets/figures/virtual-camera.png"
+              alt="Virtual camera projection for adapting LiDAR scans into the depth-image input format."
+            />
+            <figcaption>
+              <strong>LiDAR adaptation.</strong> For outdoor LiDAR data,
+              C-GenReg first converts each raw point cloud into a depth-image
+              representation by projecting it onto a virtual camera. This depth
+              image can then be fed into the same World Foundation Model used
+              for indoor data, allowing the method to generate an aligned RGB
+              view and apply the same downstream registration pipeline on
+              LiDAR data.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="section" id="results">
+          <div class="section-heading" data-reveal>
+            <h2>Results</h2>
+          </div>
+
+          <div class="results-stack">
+            <article class="results-block" data-reveal>
+              <div class="results-copy">
+                <h3>3DMatch Benchmark</h3>
+                <p>
+                  C-GenReg achieves the best overall performance across most
+                  reported indoor metrics while remaining fully zero-shot.
+                </p>
+              </div>
+              <div class="table-card image-table-card">
+                <img
+                  class="table-image table-image-3dmatch"
+                  src="./assets/tables/3dmatch-table.png"
+                  alt="Table 1 from the paper showing the 3DMatch benchmark results."
+                />
+              </div>
+            </article>
+
+            <article class="results-block" data-reveal>
+              <div class="results-copy">
+                <h3>ScanNet Benchmarks</h3>
+                <p>
+                  Cross-dataset generalization on unseen indoor scenes, including the
+                  ScanNet Hard and ScanNet SuperGlue splits.
+                </p>
+              </div>
+              <div class="table-card image-table-card">
+                <img
+                  class="table-image"
+                  src="./assets/tables/scannet-table.png"
+                  alt="Table 2 from the paper showing ScanNet benchmark results."
+                />
+              </div>
+            </article>
+
+            <div class="results-analysis">
+              <div class="results-column">
+                <article class="results-block" data-reveal>
+                  <div class="results-copy">
+                    <h3>Waymo Outdoor Benchmark</h3>
+                    <p>
+                      Real outdoor LiDAR registration where C-GenReg
+                      substantially outperforms geometric baselines trained on KITTI.
+                    </p>
+                  </div>
+                  <div class="table-card image-table-card waymo-card">
+                    <img
+                      class="table-image"
+                      src="./assets/tables/waymo-table.png"
+                      alt="Table 3 from the paper showing Waymo outdoor benchmark results."
+                    />
+                  </div>
+                </article>
+
+                <article class="results-block" data-reveal>
+                  <div class="results-copy">
+                    <h3>Ablation Studies</h3>
+                    <p>
+                      Task-specific VFMs outperform general-purpose ones, and
+                      probabilistic fusion consistently improves over simple
+                      concatenation across geometric backbones.
+                    </p>
+                  </div>
+                  <div class="table-card image-table-card">
+                    <img
+                      class="table-image"
+                      src="./assets/tables/ablations.png"
+                      alt="Table 4 from the paper showing ablation study results on 3DMatch."
+                    />
+                  </div>
+                </article>
+              </div>
+
+              <div class="results-column">
+                <figure class="visual-card prompt-card" data-reveal>
+                  <div class="results-copy">
+                    <h3>Prompt Robustness</h3>
+                    <p>
+                      Replacing a detailed scene description with a general one
+                      results in negligible degradation, while even a minimal
+                      prompt remains reasonably strong; in contrast, a
+                      semantically incorrect prompt substantially degrades
+                      registration accuracy.
+                    </p>
+                  </div>
+                  <img
+                    src="./assets/tables/prompt-ablation.png"
+                    alt="Prompt robustness figure from the paper."
+                  />
+                </figure>
+
+                <figure class="visual-card prompt-card" data-reveal>
+                  <div class="results-copy">
+                    <h3>Effect of View Selection</h3>
+                    <p>
+                      Registration performance measured by Relative Rotation
+                      Error and Relative Translation Error as a function of the
+                      number of selected views <em>K</em>. Performance
+                      saturates for <em>K</em> ≥ 4, indicating that only a few
+                      representative views are sufficient for stable
+                      registration.
+                    </p>
+                  </div>
+                  <img
+                    src="./assets/tables/view-selection-ablation.png"
+                    alt="Figure 6 from the paper showing the effect of view selection K."
+                  />
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="gallery">
+          <div class="section-heading" data-reveal>
+            <h2>Qualitative Results</h2>
+          </div>
+
+          <div class="qualitative-carousel" data-reveal>
+            <div class="carousel-toolbar">
+              <button
+                class="carousel-arrow"
+                type="button"
+                aria-label="Previous qualitative slide"
+                data-carousel-prev
+              >
+                &#8249;
+              </button>
+
+              <div class="carousel-dots" role="tablist" aria-label="Qualitative results slides">
+                <button
+                  class="carousel-dot is-active"
+                  type="button"
+                  role="tab"
+                  aria-selected="true"
+                  aria-controls="qual-slide-waymo"
+                  id="qual-tab-waymo"
+                  data-carousel-dot
+                  data-slide-index="0"
+                >
+                  Outdoor
+                </button>
+                <button
+                  class="carousel-dot"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="qual-slide-indoor"
+                  id="qual-tab-indoor"
+                  data-carousel-dot
+                  data-slide-index="1"
+                >
+                  Indoor
+                </button>
+                <button
+                  class="carousel-dot"
+                  type="button"
+                  role="tab"
+                  aria-selected="false"
+                  aria-controls="qual-slide-generated"
+                  id="qual-tab-generated"
+                  data-carousel-dot
+                  data-slide-index="2"
+                >
+                  Generated Views
+                </button>
+              </div>
+
+              <button
+                class="carousel-arrow"
+                type="button"
+                aria-label="Next qualitative slide"
+                data-carousel-next
+              >
+                &#8250;
+              </button>
+            </div>
+
+            <div class="carousel-slides">
+              <article
+                class="carousel-slide is-active"
+                id="qual-slide-waymo"
+                role="tabpanel"
+                aria-labelledby="qual-tab-waymo"
+                data-carousel-slide
+              >
+                <div class="gallery-heading">
+                  <h3>Outdoor Registration on Waymo</h3>
+                  <p>
+                    Generated source and target images are shown with a subset of
+                    color-coded matched keypoints, followed by the same
+                    correspondences on the source and target 3D point clouds. The
+                    reported RRE and RTE highlight strong qualitative performance
+                    on outdoor LiDAR data.
+                  </p>
+                </div>
+                <div class="qualitative-two-up">
+                  <figure class="feature-figure qualitative-figure">
+                    <img
+                      src="./assets/figures/qualitative/waymo-figure-10-a.png"
+                      alt="Figure 10 example 1 from the paper showing qualitative registration results on the Waymo dataset."
+                    />
+                    <figcaption>Example 1</figcaption>
+                  </figure>
+                  <figure class="feature-figure qualitative-figure">
+                    <img
+                      src="./assets/figures/qualitative/waymo-figure-10-b.png"
+                      alt="Figure 10 example 2 from the paper showing qualitative registration results on the Waymo dataset."
+                    />
+                    <figcaption>Example 2</figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <article
+                class="carousel-slide"
+                id="qual-slide-indoor"
+                role="tabpanel"
+                aria-labelledby="qual-tab-indoor"
+                data-carousel-slide
+                hidden
+              >
+                <div class="gallery-heading">
+                  <h3>Indoor Registration Results</h3>
+                  <p>
+                    Generated source and target images are shown with a subset of
+                    color-coded matched keypoints, followed by the same
+                    correspondences on the source and target 3D point clouds. The
+                    reported RRE and RTE highlight strong qualitative performance
+                    on indoor data.
+                  </p>
+                </div>
+                <div class="qualitative-two-up">
+                  <figure class="feature-figure qualitative-figure">
+                    <img
+                      src="./assets/figures/qualitative/indoor-figure-3.png"
+                      alt="Figure 3 from the paper showing an indoor qualitative registration example on 3DMatch."
+                    />
+                    <figcaption>Example 1</figcaption>
+                  </figure>
+                  <figure class="feature-figure qualitative-figure">
+                    <img
+                      src="./assets/figures/qualitative/indoor-figure-9.png"
+                      alt="Figure 9 from the supplement showing an indoor qualitative registration example on 3DMatch."
+                    />
+                    <figcaption>Example 2</figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <article
+                class="carousel-slide"
+                id="qual-slide-generated"
+                role="tabpanel"
+                aria-labelledby="qual-tab-generated"
+                data-carousel-slide
+                hidden
+              >
+                <div class="gallery-heading">
+                  <h3>Generated RGB Views Across Datasets</h3>
+                  <p>
+                    Generated RGB views from depth or LiDAR-projected depth across
+                    3DMatch, ScanNet, and Waymo, illustrating geometric coherence
+                    and multi-view consistency across source and target viewpoints.
+                  </p>
+                </div>
+
+                <div class="qualitative-dataset-stack">
+                  <section class="qualitative-dataset-panel">
+                    <div class="gallery-heading">
+                      <h4>3DMatch</h4>
+                    </div>
+                    <div class="image-grid three-up">
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-3dmatch-1.png"
+                          alt="Figure 11 example 1 showing generated RGB views on 3DMatch."
+                        />
+                        <figcaption>Example 1</figcaption>
+                      </figure>
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-3dmatch-2.png"
+                          alt="Figure 11 example 2 showing generated RGB views on 3DMatch."
+                        />
+                        <figcaption>Example 2</figcaption>
+                      </figure>
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-3dmatch-3.png"
+                          alt="Figure 11 example 3 showing generated RGB views on 3DMatch."
+                        />
+                        <figcaption>Example 3</figcaption>
+                      </figure>
+                    </div>
+                  </section>
+
+                  <section class="qualitative-dataset-panel">
+                    <div class="gallery-heading">
+                      <h4>ScanNet</h4>
+                    </div>
+                    <div class="image-grid three-up">
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-scannet-1.png"
+                          alt="Figure 12 example 1 showing generated RGB views on ScanNet."
+                        />
+                        <figcaption>Example 1</figcaption>
+                      </figure>
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-scannet-2.png"
+                          alt="Figure 12 example 2 showing generated RGB views on ScanNet."
+                        />
+                        <figcaption>Example 2</figcaption>
+                      </figure>
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-scannet-3.png"
+                          alt="Figure 12 example 3 showing generated RGB views on ScanNet."
+                        />
+                        <figcaption>Example 3</figcaption>
+                      </figure>
+                    </div>
+                  </section>
+
+                  <section class="qualitative-dataset-panel">
+                    <div class="gallery-heading">
+                      <h4>Waymo</h4>
+                    </div>
+                    <div class="image-grid qualitative-waymo-grid">
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-waymo-1.png"
+                          alt="Figure 13 example 1 showing generated RGB views on Waymo."
+                        />
+                        <figcaption>Example 1</figcaption>
+                      </figure>
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-waymo-2.png"
+                          alt="Figure 13 example 2 showing generated RGB views on Waymo."
+                        />
+                        <figcaption>Example 2</figcaption>
+                      </figure>
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-waymo-3.png"
+                          alt="Figure 13 example 3 showing generated RGB views on Waymo."
+                        />
+                        <figcaption>Example 3</figcaption>
+                      </figure>
+                      <figure class="image-card">
+                        <img
+                          src="./assets/figures/qualitative/rgb-waymo-4.png"
+                          alt="Figure 13 example 4 showing generated RGB views on Waymo."
+                        />
+                        <figcaption>Example 4</figcaption>
+                      </figure>
+                    </div>
+                  </section>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section bibtex-section" id="bibtex">
+          <div class="section-heading" data-reveal>
+            <h2>Citation</h2>
+          </div>
+          <div class="bibtex-card" data-reveal>
+            <button id="copy-bibtex" class="copy-button" type="button">
+              Copy
+            </button>
+            <pre><code>@article{haitman2026cgenreg,
+  title     = {C-GenReg: Training-Free 3D Point Cloud Registration by Multi-View-Consistent Geometry-to-Image Generation with Probabilistic Modalities Fusion},
+  author    = {Haitman, Yuval and Efraim, Amit and Francos, Joseph M.},
+  journal   = {arXiv preprint arXiv:2604.16680},
+  year      = {2026},
+  doi       = {10.48550/arXiv.2604.16680},
+  url       = {https://arxiv.org/abs/2604.16680}
+}</code></pre>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./assets/script.js"></script>
+  </body>
+</html>
