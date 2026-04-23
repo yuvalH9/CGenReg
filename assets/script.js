@@ -17,6 +17,27 @@ document.querySelectorAll("[data-reveal]").forEach((element) => {
   revealObserver.observe(element);
 });
 
+const trackEvent = (eventName, params = {}) => {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, params);
+  }
+};
+
+document.querySelectorAll("[data-analytics-event]").forEach((element) => {
+  element.addEventListener("click", () => {
+    const eventName = element.getAttribute("data-analytics-event");
+
+    if (!eventName) {
+      return;
+    }
+
+    trackEvent(eventName, {
+      link_text: element.textContent?.trim() ?? "",
+      link_url: element.getAttribute("href") ?? "",
+    });
+  });
+});
+
 const heroVideo = document.getElementById("hero-video");
 
 if (heroVideo) {
@@ -39,6 +60,9 @@ if (copyButton) {
 
     try {
       await navigator.clipboard.writeText(bibtex);
+      trackEvent("copy_bibtex_click", {
+        location: "citation_section",
+      });
       copyButton.textContent = "Copied";
       window.setTimeout(() => {
         copyButton.textContent = "Copy";
