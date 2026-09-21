@@ -1,0 +1,9 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+results/*.pkl
+results/*.npy
+results/*.npz
+*.log
+.DS_Store
+.idea
